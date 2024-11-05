@@ -1,0 +1,40 @@
+{
+  "name": "my-workspace",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/my-workspace/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "my-workspace:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "my-workspace:build:development"
+        },
+        "production": {
+          "buildTarget": "my-workspace:build:production"
+        }
+      }
+    },
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+			"options": {
+        "watch": true,
+        "sourceMap": true,
+        "outputPath": "dist/apps/test",
+        "target": "node",
+        "compiler": "tsc",
+        "webpackConfig": "apps/my-workspace/webpack-hmr.config.js",
+        "main": "apps/my-workspace/src/main.ts",
+        "tsConfig": "apps/my-workspace/tsconfig.app.json"
+      }
+    }
+  }
+}
