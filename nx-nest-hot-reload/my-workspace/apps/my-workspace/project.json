@@ -8,6 +8,7 @@
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
+      "dependsOn": ["build"],
       "options": {
         "buildTarget": "my-workspace:build",
         "runBuildTargetDependencies": false
@@ -21,14 +22,14 @@
         }
       }
     },
-    "build": {
+    "build-hotreload": {
       "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
+      "defaultConfiguration": "development",
 			"options": {
         "watch": true,
         "sourceMap": true,
-        "outputPath": "dist/apps/test",
+        "outputPath": "dist/apps/my-workspace",
         "target": "node",
         "compiler": "tsc",
         "webpackConfig": "apps/my-workspace/webpack-hmr.config.js",

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:hotreload": "npx nx build my-workspace --watch"
+    "start:hotreload": "npx nx build-hotreload my-workspace"
   },
   "private": true,
   "dependencies": {

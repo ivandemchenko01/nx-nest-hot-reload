@@ -4,7 +4,7 @@ import { DynamicModule, Module, OnModuleInit } from '@nestjs/common';
 })
 export class MyLibModule implements OnModuleInit {
   async onModuleInit() {
-    console.log('2asdasdada hot reload')
+    console.log('2asdasdфывada hot reload')
   }
   static register(): DynamicModule {
     return {

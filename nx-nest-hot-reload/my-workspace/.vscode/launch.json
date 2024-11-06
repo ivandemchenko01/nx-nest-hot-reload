@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug NestJS with Webpack HMR",
+        "skipFiles": ["<node_internals>/**"],
+        "runtimeExecutable": "npx",
+        "runtimeArgs": ["nx", "build-hotreload", "my-workspace"],
+        "args": [
+          "--inspect=0.0.0.0:9229",
+          "--watch",
+        ],
+         "console": "integratedTerminal",
+        "outFiles": ["${workspaceFolder}/dist/apps/my-workspace/**/*.js"],
+        "env": {
+          "TS_NODE_FILES": "true"
+        },
+        "autoAttachChildProcesses": true,
+        "restart": true,
+        "sourceMaps": true,
+        "stopOnEntry": false,
+        "remoteRoot": "${workspaceFolder}/dist/apps/my-workspace/"
+      },
+      {
+        "name": "nest",
+        "type": "node",
+        "request": "attach",
+        "port": 9229,
+        "restart": true
+      },
+      {
+        "name": "Launch via NPM",
+        "request": "launch",
+        "runtimeArgs": ["run", "start:hotreload"],
+        "runtimeExecutable": "npm",
+        "skipFiles": ["<node_internals>/**"],
+        "type": "node"
+      }
+    ]
+}

@@ -18,13 +18,15 @@ module.exports = composePlugins(
 		}),
 	]
 
+
+  config.devtool = 'source-map';
   config.target = "node";
 
   config.module.rules = [
     {
       test: /\.ts$/,
       use: 'ts-loader',
-      exclude: /node_modules/,
+      exclude: /node_modules/
     },
   ];
 
@@ -34,7 +36,11 @@ module.exports = composePlugins(
     new webpack.WatchIgnorePlugin({
 			paths: [/\.js$/, /\.d\.ts$/],
 		}),
-		new RunScriptWebpackPlugin({ name: options.outputFileName, autoRestart: false }),
+		new RunScriptWebpackPlugin(
+      {
+        name: options.outputFileName,
+        autoRestart: false,
+        nodeArgs: ["--inspect=0.0.0.0:9229"] }),
 	]
 	return config
 })
