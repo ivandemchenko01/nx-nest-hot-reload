@@ -26,7 +26,7 @@
       "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "development",
-			"options": {
+      "options": {
         "watch": true,
         "sourceMap": true,
         "outputPath": "dist/apps/my-workspace",
